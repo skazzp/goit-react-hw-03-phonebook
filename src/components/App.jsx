@@ -38,10 +38,11 @@ export class App extends Component {
     this.setState({ filter: value });
   };
   filterContacts = () => {
+    const filterNormalized = this.state.filter.toLowerCase();
     return !this.state.filter
       ? this.state.contacts
       : this.state.contacts.filter(elem =>
-          elem.name.includes(this.state.filter)
+          elem.name.toLowerCase().includes(filterNormalized)
         );
   };
   removeContact = id => {
